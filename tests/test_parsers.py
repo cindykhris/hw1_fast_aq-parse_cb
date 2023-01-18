@@ -4,6 +4,8 @@ from seqparser import (
         FastaParser,
         FastqParser)
 
+import pytest
+
 
 def test_freebie_parser_1():
     """
@@ -28,7 +30,12 @@ def test_FastaParser():
     your FastaParser class and assert that it properly
     reads in the example Fasta File.
     """
-    pass
+    fasta_file = "/Users/cindybarrios/Desktop/BMI_203/hw1_fast_aq-parse_cb/data/test.fa"
+    parser_obj = FastaParser(fasta_file)
+    parser_line = [record for record in parser_obj]
+
+    assert parser_line[0][0] == "seq0"
+    assert parser_line[0][0] == "seq1", "Error: there's something wrong with the FastaParser"
 
 
 def test_FastqParser():
@@ -38,4 +45,10 @@ def test_FastqParser():
     your FastqParser class and assert that it properly
     reads in the example Fastq File.
     """
-    pass
+    
+    fasta_file = "/Users/cindybarrios/Desktop/BMI_203/hw1_fast_aq-parse_cb/data/test.fq"
+    parser_obj = FastqParser(fasta_file)
+    parser_line = [record for record in parser_obj]
+
+    assert parser_line[0][0] == "seq0"
+    assert parser_line[0][0] == "seq1", "Error: there's something wrong with the FastqParser"
